@@ -2,3 +2,7 @@
   tasks:
   - name: Update system
     apt: upgrade=dist update_cache=yes
+  - name: Install python
+    apt: name=python state=present
+  - name: Install git
+    apt: name=git state=present
