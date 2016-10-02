@@ -1,0 +1,11 @@
+- hosts: postgres
+  tasks:
+  - name: Install postgresql dependencies
+    apt: name={{item}} state=present
+    with_items:
+      - libpq-dev
+      - python-psycopg2
+  - name: Install postgres packages
+    apt: name=postgresql state=present
+  - name: Create test database
+    postgresql_db: name=test_db
