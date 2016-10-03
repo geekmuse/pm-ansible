@@ -1,10 +1,13 @@
 # file: roles/common/tasks/main.yml
 
 - name: Update system
+  become: true
   apt: upgrade=dist update_cache=yes
 
 # - name: Install python
+#   become: true
 #   apt: name=python state=present
     
 - name: Install git
+  become: true
   apt: name=git state=present

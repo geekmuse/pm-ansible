@@ -1,21 +1,17 @@
 # file: playbook.yml
 
 - hosts: all
-  become: true
   roles:
     - role: common
 
 - hosts: web
-  become: true
   roles:
     - role: web
 
 - hosts: db
-  become: true
   roles:
     - role: db
 
 - hosts: all
-  become: true
   roles:
     - role: monitoring
