@@ -1,0 +1,4 @@
+# file: roles/db/meta/main.yml
+
+dependencies:
+  - { role: common }

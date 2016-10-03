@@ -1,0 +1,17 @@
+# file: playbook.yml
+
+- hosts: all
+  roles:
+    - role: common
+
+- hosts: web
+  roles:
+    - role: web
+
+- hosts: db
+  roles:
+    - role: db
+
+- hosts: all
+  roles:
+    - role: monitoring

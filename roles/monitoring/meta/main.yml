@@ -1,0 +1,6 @@
+# file: roles/monitoring/meta/main.yml
+
+dependencies:
+  - { role: common }
+  - { role: web }
+  - { role: db }

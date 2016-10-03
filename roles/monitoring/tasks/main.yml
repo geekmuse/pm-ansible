@@ -1,0 +1,4 @@
+# file: roles/monitoring/tasks/main.yml
+
+- name: Install netdata
+  shell: curl -Ss 'https://raw.githubusercontent.com/firehol/netdata-demo-site/master/install-required-packages.sh' >/tmp/kickstart.sh && bash /tmp/kickstart.sh netdata-all

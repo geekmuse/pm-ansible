@@ -1,0 +1,15 @@
+galaxy_info:
+  author: Brad Campbell
+  company: Self
+  description: "Install Postgres, Nginx, and netdata monitoring tool."
+  min_ansible_version: 1.9.4
+  license: MIT
+  platforms:
+  - name: Ubuntu
+    versions:
+    - 14.04
+  categories:
+  - database
+  - database:sql
+
+dependencies: []

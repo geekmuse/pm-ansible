@@ -1,6 +1,0 @@
-- hosts: nginx
-  tasks:
-  - name: Install nginx
-    apt: name=nginx state=present
-  - name: Set custom homepage
-    template: src=templates/index.html dest=/usr/share/nginx/html owner=root group=root mode=0644
