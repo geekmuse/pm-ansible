@@ -1,7 +1,9 @@
 # file: roles/web/tasks/main.yml
 
 - name: Install nginx
+  become: true
   apt: name=nginx state=present
   
 - name: Set custom homepage
+  become: true
   template: src=templates/index.html dest=/usr/share/nginx/html owner=root group=root mode=0644
