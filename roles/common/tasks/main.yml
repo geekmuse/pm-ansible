@@ -4,9 +4,9 @@
   become: true
   apt: upgrade=dist update_cache=yes
 
-# - name: Install python
-#   become: true
-#   apt: name=python state=present
+- name: Install python
+  become: true
+  apt: name=python state=present
     
 - name: Install git
   become: true
