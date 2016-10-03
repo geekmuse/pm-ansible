@@ -1,4 +1,53 @@
 # file: roles/monitoring/tasks/main.yml
 
+- name: Install netdata dependencies
+  become: true
+  apt: name={{item}} state=present
+  with_items:
+    - zlib1g-dev
+    - uuid-dev
+    - libmnl-dev
+    - gcc
+    - make
+    - git
+    - autoconf
+    - autoconf-archive
+    - autogen
+    - automake
+    - pkg-config
+    - curl
+
+- name: Install netdata extras
+  become: true
+  apt: name={{item}} state=present
+  with_items:
+    - jq
+    - nodejs
+
+- name: Clone netdata repo
+  become: true
+  shell: cd /opt && git clone https://github.com/firehol/netdata.git --depth=1
+
 - name: Install netdata
-  shell: curl -Ss 'https://raw.githubusercontent.com/firehol/netdata-demo-site/master/install-required-packages.sh' >/tmp/kickstart.sh && bash /tmp/kickstart.sh netdata-all
+  become: true
+  shell: cd /opt/netdata && ./netdata-installer.sh
+
+- name: Kill any running netdata processes
+  become: true
+  shell: killall netdata
+
+- name: Copy netdata startup script
+  become: true
+  shell: cp /opt/netdata/system/netdata.service /etc/systemd/system/
+
+- name: Make systemd aware of netdata
+  become: true
+  shell: systemctl daemon-reload
+
+- name: Enable netdata service at startup
+  become: true
+  shell: systemctl enable netdata
+
+- name: Start netdata service
+  become: true
+  shell: service netdata start
