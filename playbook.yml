@@ -8,6 +8,10 @@
   roles:
     - role: web
 
+- hosts: db:ansible
+  roles:
+    - role: db_deps
+
 - hosts: db
   roles:
     - role: db

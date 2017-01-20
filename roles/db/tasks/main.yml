@@ -1,12 +1,5 @@
 # file: roles/db/tasks/main.yml
 
-- name: Install postgresql dependencies
-  become: true
-  apt: name={{item}} state=present
-  with_items:
-    - libpq-dev
-    - python-psycopg2
-
 - name: Install postgres package
   become: true
   apt: name=postgresql state=present
