@@ -5,6 +5,7 @@
   apt: name=postgresql state=present
 
 - name: Create test database
+  remote_user: root
   become: true
   become_user: postgres
-  postgresql_db: name=test_db
+  postgresql_db: name=test_db login_user=postgres
