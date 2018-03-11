@@ -2,8 +2,15 @@
 
 - name: Install nginx
   become: true
-  apt: name=nginx state=present
+  apt:
+    name: nginx
+    state: present
   
 - name: Set custom homepage
   become: true
-  template: src=index.html dest=/usr/share/nginx/html owner=root group=root mode=0644
+  template:
+    src: index.html
+    dest: /usr/share/nginx/html
+    owner: root
+    group: root
+    mode: 0644

@@ -2,7 +2,9 @@
 
 - name: Install postgresql dependencies
   become: true
-  apt: name={{item}} state=present
+  apt: 
+    name: "{{item}}"
+    state: present
   with_items:
     - libpq-dev
     - python-psycopg2

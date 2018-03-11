@@ -2,12 +2,18 @@
 
 - name: Update system
   become: true
-  apt: upgrade=dist update_cache=yes
+  apt:
+    upgrade: dist
+    update_cache: true
 
 - name: Install python
   become: true
-  apt: name=python state=present
+  apt:
+    name: python
+    state: present
     
 - name: Install git
   become: true
-  apt: name=git state=present
+  apt:
+    name: git
+    state: present

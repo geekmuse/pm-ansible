@@ -2,7 +2,9 @@
 
 - name: Install netdata dependencies
   become: true
-  apt: name={{item}} state=present
+  apt: 
+    name: "{{item}}"
+    state: present
   with_items:
     - zlib1g-dev
     - uuid-dev
@@ -19,7 +21,9 @@
 
 - name: Install netdata extras
   become: true
-  apt: name={{item}} state=present
+  apt: 
+    name: "{{item}}"
+    state: present
   with_items:
     - jq
     - nodejs
@@ -38,12 +42,21 @@
 
 - name: Put netdata init.d script
   become: true
-  template: src=netdata-init.d.sh dest=/etc/init.d/netdata owner=root group=root mode=0755
+  template: 
+    src: netdata-init.d.sh 
+    dest: /etc/init.d/netdata 
+    owner: root 
+    group: root 
+    mode: 0755
 
 - name: Enable netdata service at startup
   become: true
-  shell: update-rc.d netdata defaults
+  service:
+    name: netdata
+    enabled: yes
 
 - name: Start netdata service
   become: true
-  shell: service netdata start
+  service:
+    name: netdata
+    state: started
