@@ -10,7 +10,7 @@
   become: true
   template:
     src: index.html
-    dest: /usr/share/nginx/html
+    dest: /var/www/html/index.nginx-debian.html
     owner: root
     group: root
     mode: 0644
